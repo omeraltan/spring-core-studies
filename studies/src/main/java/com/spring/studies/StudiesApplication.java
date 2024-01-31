@@ -1,13 +1,16 @@
 package com.spring.studies;
 
+import com.spring.studies.config.annobased.Car;
+import com.spring.studies.config.annobased.Config;
 import com.spring.studies.ioc.constructor.Person;
 import com.spring.studies.ioc.field.Cars;
 import com.spring.studies.ioc.setter.Employee;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-@SpringBootApplication
+@SpringBootApplication // -> This single annotation is equivalent to using @Configuration, @EnableAutoConfiguration, @ComponentScan
 public class StudiesApplication {
 
     public static void main(String[] args) {
@@ -27,6 +30,13 @@ public class StudiesApplication {
         System.out.println("-----field injection-----");
         Cars cars = context.getBean("carId", Cars.class);
         System.out.println(cars);
+
+        // Now, we call annotation based injection
+        System.out.println("-----annotation based injection-----");
+        ApplicationContext contextAnnotationBased = new AnnotationConfigApplicationContext(Config.class);
+        Car car = contextAnnotationBased.getBean(Car.class);
+        System.out.println(car.getEngine());
+        System.out.println(car.getTransmission());
     }
 
 }

@@ -12,6 +12,9 @@
                            http://www.springframework.org/schema/util
                            http://www.sringframework.org/schema/util/spring-util.xsd">
 
+
+    <context:annotation-config />
+
     <bean id="employeeId" class="com.spring.studies.ioc.setter.Employee">
         <property name="name" value="Ömer" />
         <property name="surname" value="Altan" />
@@ -34,7 +37,7 @@
         <constructor-arg index="3" value="M"/>
     </bean>
 
-    <bean id="carId" class="com.spring.studies.ioc.field.Cars">
+    <bean id="carId" class="com.spring.studies.ioc.field.Cars" autowire="byType">
         <property name="type" value="Taxi"/>
         <property name="wheel" value="4"/>
         <property name="bmw" ref="bmwId"/>
@@ -44,7 +47,7 @@
         <property name="color" value="black"/>
         <property name="door" value="4"/>
     </bean>
-    <bean id="bmwId2" class="com.spring.studies.ioc.field.Bmw">
+    <bean id="bmwId2" class="com.spring.studies.ioc.field.Bmw" lazy-init="true">
         <property name="model" value="118d"/>
         <property name="color" value="white"/>
         <property name="door" value="4"/>

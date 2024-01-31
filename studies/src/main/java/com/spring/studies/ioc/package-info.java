@@ -17,4 +17,8 @@ package com.spring.studies.ioc;
  *
  *      Note1: The Spring documentation recommends using constructor-based injection for mandatory dependencies
  *             and setter-based injection for optional ones.
+ *
+ *      @Configuration
+ *      @Bean
+ *      @Qualifier:
  */
