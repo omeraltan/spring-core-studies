@@ -53,5 +53,9 @@
         <property name="door" value="4"/>
     </bean>
 
+    <bean id="indexService" class="com.spring.studies.xmlbased.IndexService"/>
+    <bean id="indexApp" class="com.spring.studies.xmlbased.IndexApp">
+        <property name="service" ref="indexService"/>
+    </bean>
 
 </beans>

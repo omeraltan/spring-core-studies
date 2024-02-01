@@ -5,6 +5,10 @@ import com.spring.studies.config.annobased.Config;
 import com.spring.studies.ioc.constructor.Person;
 import com.spring.studies.ioc.field.Cars;
 import com.spring.studies.ioc.setter.Employee;
+import com.spring.studies.primary.ConfigPrimary;
+import com.spring.studies.primary.Information;
+import com.spring.studies.primary.Manager;
+import com.spring.studies.primary.ManagerService;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -33,10 +37,22 @@ public class StudiesApplication {
 
         // Now, we call annotation based injection
         System.out.println("-----annotation based injection-----");
-        ApplicationContext contextAnnotationBased = new AnnotationConfigApplicationContext(Config.class);
+        AnnotationConfigApplicationContext contextAnnotationBased = new AnnotationConfigApplicationContext(Config.class);
         Car car = contextAnnotationBased.getBean(Car.class);
         System.out.println(car.getEngine());
         System.out.println(car.getTransmission());
+
+        // Now, we call @Primary annotation example
+        System.out.println("-----@Primary annotation-----");
+        AnnotationConfigApplicationContext contextPrimary = new AnnotationConfigApplicationContext(ConfigPrimary.class);
+        Information info = contextPrimary.getBean(Information.class);
+        System.out.println(info);
+
+        // Now, we call @Primary With @Component example
+        System.out.println("-----@Primary with @Component-----");
+        ManagerService service = contextPrimary.getBean(ManagerService.class);
+        Manager manager = service.getManager();
+        System.out.println(manager.getManagerName());
     }
 
 }
