@@ -58,4 +58,7 @@
         <property name="service" ref="indexService"/>
     </bean>
 
+    <bean id="personSingleton" class="com.spring.studies.scopes.Person" scope="singleton"/>
+    <bean id="personPrototype" class="com.spring.studies.scopes.Person" scope="prototype"/>
+
 </beans>
