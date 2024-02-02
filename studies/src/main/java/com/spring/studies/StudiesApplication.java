@@ -1,7 +1,11 @@
 package com.spring.studies;
 
+import com.spring.studies.autowiringofgeneric.CustomConfiguration;
+import com.spring.studies.autowiringofgeneric.Vehicle;
 import com.spring.studies.config.annobased.Car;
 import com.spring.studies.config.annobased.Config;
+import com.spring.studies.injecting.CollectionConfig;
+import com.spring.studies.injecting.CollectionsBean;
 import com.spring.studies.ioc.constructor.Person;
 import com.spring.studies.ioc.field.Cars;
 import com.spring.studies.ioc.setter.Employee;
@@ -53,6 +57,31 @@ public class StudiesApplication {
         ManagerService service = contextPrimary.getBean(ManagerService.class);
         Manager manager = service.getManager();
         System.out.println(manager.getManagerName());
+
+          // Now we call injecting collection
+//        System.out.println("-----Injecting Collection-----");
+//        ApplicationContext InjectionCollection = new AnnotationConfigApplicationContext(CollectionConfig.class);
+//        CollectionsBean collectionsBean = InjectionCollection.getBean(CollectionsBean.class);
+//        collectionsBean.printNameList();
+
+        // Now we call injecting collection set
+//        System.out.println("-----Injecting Collection Set-----");
+//        ApplicationContext InjectionCollection = new AnnotationConfigApplicationContext(CollectionConfig.class);
+//        CollectionsBean collectionsBean = InjectionCollection.getBean(CollectionsBean.class);
+//        collectionsBean.printNameSet();
+
+//        // Now we call injecting collection map
+//        System.out.println("-----Injecting Collection Map-----");
+//        ApplicationContext InjectionCollection = new AnnotationConfigApplicationContext(CollectionConfig.class);
+//        CollectionsBean collectionsBean = InjectionCollection.getBean(CollectionsBean.class);
+//        collectionsBean.printNameMap();
+
+        // Now we call injecting collection map
+        System.out.println("-----Injecting Collection Reference-----");
+        ApplicationContext InjectionCollection = new AnnotationConfigApplicationContext(CollectionConfig.class);
+        CollectionsBean collectionsBean = InjectionCollection.getBean(CollectionsBean.class);
+        collectionsBean.printBeanList();
+
     }
 
 }
